@@ -39,22 +39,14 @@ z[0]['y'] = 30
 print(z)
 
 print("\n2. Iterate Through a List of Dictionaries\n")
-"""
-In the first version of this I printed it out based on the students list
-I redid it to make it more general and could accept a different list
-I was stuck on the bonus and then looked at solution to see how to print out
-I tried to do something differnet than the solutio but didn't see how 
-It seemed that catonating a string was the best and easiest approach
-"""
 
 def iterateDictionary(lst):
-    
+    temp = []
     for i in range(0, len(lst)):
-        str = ""
         for key, value in lst[i].items(): # ex. crash-course pg109
-            str = str + f"{key} - {value}, "
-        print(str)
-
+            string.append("{key} - {value}, ")
+            print(temp)
+        
 students = [
      {'first_name':  'Michael', 'last_name' : 'Jordan'},
      {'first_name' : 'John', 'last_name' : 'Rosales'},
