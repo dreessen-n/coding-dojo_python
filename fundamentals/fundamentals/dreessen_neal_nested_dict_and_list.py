@@ -40,11 +40,11 @@ print(z)
 
 print("\n2. Iterate Through a List of Dictionaries\n")
 
-def iterateDictionary(students):
-    for i in range(0, len(students)):
-        print(f"first_name - {students[i]['first_name']},"
-              f" last_name - {students[i]['last_name']}")
-
+def iterateDictionary(lst):
+    for i in range(0, len(lst)):
+        for key, value in lst[i].items(): # ex. crash-course pg109
+            print(f"{key} - {value}")
+                
 students = [
      {'first_name':  'Michael', 'last_name' : 'Jordan'},
      {'first_name' : 'John', 'last_name' : 'Rosales'},
@@ -52,8 +52,10 @@ students = [
      {'first_name' : 'KB', 'last_name' : 'Tonel'}
 ]
 
-print(f"students = {students}\n")
+print(f"\nstudents = {students}\n")
 iterateDictionary(students) 
+print(f"\nz = {z}\n")
+iterateDictionary(z)
 
 # should output: (it's okay if each key-value pair ends up on 2 separate lines;
 # bonus to get them to appear exactly as below!)
