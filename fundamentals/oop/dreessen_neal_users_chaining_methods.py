@@ -50,8 +50,6 @@ class Users:
             print(f"you only have {self.gold_card_points} points")
         return self
 
-
-
 # Create first user
 print("\nFIRST USER:")
 
