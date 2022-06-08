@@ -1,4 +1,4 @@
-# Python OOP - user assignment
+# Python OOP - user assignment modified for chaining methods
 
 class Users:
     """Create a model of a user"""
@@ -27,6 +27,7 @@ class Users:
             print(f"{self.first_name} has no gold card points\n")
         else:
             print(f"{self.first_name} has {self.gold_card_points} points\n")
+        return self
 
     def enroll(self):
         """Enroll user into rewards member and add 200 points"""
@@ -37,6 +38,7 @@ class Users:
             print(f"{self.first_name} you now have {self.gold_card_points} points")
         else:
             print(f"{self.first_name} you are already a rewards member\n")
+        return self
 
     def spend_points(self, amount):
         """Redeem reward points if member has them"""
@@ -46,49 +48,26 @@ class Users:
         else:
             print(f"{self.first_name} you do not have enough points to redeem")
             print(f"you only have {self.gold_card_points} points")
+        return self
 
 
 
 # Create first user
 print("\nFIRST USER:")
+
 user_neal = Users('neal', 'dreessen', 'dreessen.edu@gmail.com', 53)
 
-# Displya user info
-user_neal.display_info()
-
-# Enroll user into rewards
-print(f"Join rewards club")
-user_neal.enroll()
-
-# Display user info again to show enrollment
-user_neal.display_info()
-
-# Redeem points
-print(f"Redeem Rewards Points:")
-user_neal.spend_points(50)
-
-# Display ueer info again to show new balance on points
-user_neal.display_info()
-
-# Check to see if enrolled in rewwards
-print("Check if user is enrolled in rewards...")
-user_neal.enroll()
-
-# Try to redeem more points than you have
-print("See if user can spend more points than they have?...")
-user_neal.spend_points(400)
-
+# Used chaining methods
+user_neal.display_info().enroll().display_info().spend_points(50).display_info().enroll().spend_points(400)
 
 print("\nSECOND USER:")
 
 user_jeni = Users('jeni', 'mccarthy', 'her@email.com', 50)
 # Used chaining methods
 user_jeni.display_info().enroll().spend_points(80)
-# user_jeni.enroll()
-# user_jeni.spend_points(80)
 
 print("\nTHIRD USER:")
 user_burt = Users('burt', 'reynolds', 'burt@bandit.com', 75)
-user_burt.display_info()
-user_burt.spend_points(40)
+# Used chaining methods
+user_burt.display_info().spend_points(40)
 
