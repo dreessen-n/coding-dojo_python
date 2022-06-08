@@ -65,6 +65,7 @@ user_jeni = Users('jeni', 'mccarthy', 'her@email.com', 50)
 user_jeni.display_info().enroll().spend_points(80)
 
 print("\nTHIRD USER:")
+
 user_burt = Users('burt', 'reynolds', 'burt@bandit.com', 75)
 # Used chaining methods
 user_burt.display_info().spend_points(40)
