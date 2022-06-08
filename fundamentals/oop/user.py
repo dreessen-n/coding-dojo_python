@@ -15,7 +15,7 @@ class Users:
     def display_info(self):
         """Display user info"""
         full_name = f"{self.first_name} {self.last_name}"
-        print(f"\nUser information:\n")
+        print(f"\nUser information:")
         print(f"User: {full_name}")
         print(f"User email: {self.email}")
         print(f"User age: {self.age}")
@@ -37,26 +37,28 @@ class Users:
             self.gold_card_points += 200
             print(f"{self.first_name} you now have {self.gold_card_points} points")
         else:
-            print(f"{self.first_name} you are already a rewards member")
+            print(f"{self.first_name} you are already a rewards member\n")
 
     def spend_points(self, amount):
         """Redeem reward points if member has them"""
         if self.gold_card_points > amount:
             self.gold_card_points -= amount
-            print(f"\n{self.first_name} you have redeemed {amount} points")
+            print(f"{self.first_name} you have redeemed {amount} points")
         else:
-            print(f"\n{self.first_name} you do not have enough points to redeem")
+            print(f"{self.first_name} you do not have enough points to redeem")
+            print(f"you only have {self.gold_card_points} points")
 
 
 
-# Create user
+# Create first user
+print("\nFIRST USER:")
 user_neal = Users('neal', 'dreessen', 'dreessen.edu@gmail.com', 53)
 
 # Displya user info
 user_neal.display_info()
 
 # Enroll user into rewards
-print(f"Join rewards club\n")
+print(f"Join rewards club")
 user_neal.enroll()
 
 # Display user info again to show enrollment
@@ -70,7 +72,23 @@ user_neal.spend_points(50)
 user_neal.display_info()
 
 # Check to see if enrolled in rewwards
+print("Check if user is enrolled in rewards...")
 user_neal.enroll()
 
 # Try to redeem more points than you have
+print("See if user can spend more points than they have?...")
 user_neal.spend_points(400)
+
+
+print("\nSECOND USER:")
+
+user_jeni = Users('jeni', 'mccarthy', 'her@email.com', 50)
+user_jeni.display_info()
+user_jeni.enroll()
+user_jeni.spend_points(80)
+
+print("\nTHIRD USER:")
+user_burt = Users('burt', 'reynolds', 'burt@bandit.com', 75)
+user_burt.display_info()
+user_burt.spend_points(40)
+
