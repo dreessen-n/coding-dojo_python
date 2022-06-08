@@ -28,7 +28,6 @@ class Users:
         else:
             print(f"{self.first_name} has {self.gold_card_points} points\n")
 
-
     def enroll(self):
         """Enroll user into rewards member and add 200 points"""
         if self.is_rewards_member == False:
@@ -48,13 +47,12 @@ class Users:
             print(f"{self.first_name} you do not have enough points to redeem")
             print(f"you only have {self.gold_card_points} points")
 
-
-
 # Create first user
 print("\nFIRST USER:")
+
 user_neal = Users('neal', 'dreessen', 'dreessen.edu@gmail.com', 53)
 
-# Displya user info
+# Display user info
 user_neal.display_info()
 
 # Enroll user into rewards
@@ -79,7 +77,6 @@ user_neal.enroll()
 print("See if user can spend more points than they have?...")
 user_neal.spend_points(400)
 
-
 print("\nSECOND USER:")
 
 user_jeni = Users('jeni', 'mccarthy', 'her@email.com', 50)
@@ -88,7 +85,7 @@ user_jeni.enroll()
 user_jeni.spend_points(80)
 
 print("\nTHIRD USER:")
+
 user_burt = Users('burt', 'reynolds', 'burt@bandit.com', 75)
 user_burt.display_info()
 user_burt.spend_points(40)
-
