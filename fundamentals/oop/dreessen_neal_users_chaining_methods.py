@@ -54,7 +54,6 @@ class Users:
 print("\nFIRST USER:")
 
 user_neal = Users('neal', 'dreessen', 'dreessen.edu@gmail.com', 53)
-
 # Used chaining methods
 user_neal.display_info().enroll().display_info().spend_points(50).display_info().enroll().spend_points(400)
 
