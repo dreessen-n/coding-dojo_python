@@ -71,3 +71,6 @@ user_neal.display_info()
 
 # Check to see if enrolled in rewwards
 user_neal.enroll()
+
+# Try to redeem more points than you have
+user_neal.spend_points(400)
