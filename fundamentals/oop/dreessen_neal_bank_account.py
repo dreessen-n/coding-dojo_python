@@ -77,7 +77,7 @@ class BankAccount:
         """
         if self.balance > 0:
             # Use math to round for ease of assignment
-            print(f"Calculating interest yield for the month for {self.name}:")
+            print(f"Calculating interest yield (monthly) for {self.name}:")
             print(f"Account balance: ${self.balance}")
             print(f"Interest rate: {self.int_rate}%")
             amt = int(math.ceil(self.balance * (self.int_rate / 100)))
