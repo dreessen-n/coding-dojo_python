@@ -25,6 +25,7 @@ class BankAccount:
         self.num_deposits += 1
         return self
 
+# Created extra method to calculate fee
     def insufficient_funds_fee(self):
         """
         When insufficient funds: withdraw $5 from account and 
@@ -53,9 +54,8 @@ class BankAccount:
         self.num_withdraws += 1
         return self
 
-    def display_account_info(self, acct_num):
-        """Print to console: eg. 'banlance: $100'"""
-        print(f"Account Information for {acct_num}:")
+    def display_account_info(self):
+        """Print to console: eg. 'balance: $100'"""
         print(f"Account balance: {self.balance}")
         print(f"Account interest rate: {self.int_rate}")
         print(f"Number of deposits: {self.num_deposits}")
@@ -76,31 +76,35 @@ class BankAccount:
             print(f"New balance: {self.balance}\n")
         return self
 
+# Add a classmethod for printing all instances
+    @classmethod
+    def print_accounts(cls):
+        for acct in BankAccount:
+            print(acct)
 
 # Test the class
 
 # First account and starting balance of 100; use default int_rate
 print()
 acct_001 = BankAccount(100, 'sav')
-acct_001.display_account_info('acct_001')
+acct_001.display_account_info()
 
 """
 First Acct: use chainging to: make 3 deposits and 1 withdrawl, yield interest,
 and display account info
 """
-acct_001.deposit(100).deposit(1000).withdraw(750).deposit(250).yield_interest().display_account_info('acct_001')
+acct_001.deposit(100).deposit(1000).withdraw(750).deposit(250).yield_interest().display_account_info()
 
 # Second acct with start balance 500 and interest rate: 7%
 acct_002 = BankAccount(500, 'chk', 7)
-acct_002.display_account_info('acct_002')
+acct_002.display_account_info()
 
 """
 Second Acct: use chaining to: make 2 deposits and 4 withdraws, yield interest,
 and display acct info.
 """
-acct_002.deposit(2500).withdraw(1000).withdraw(500).deposit(2000).withdraw(3000).yield_interest().display_account_info('acct_002')
+acct_002.deposit(2500).withdraw(1000).withdraw(500).deposit(2000).withdraw(3000).yield_interest().display_account_info()
 
 """
 Bonus: use a classmethod to print all instances of a BankAccount's info
 """
-
