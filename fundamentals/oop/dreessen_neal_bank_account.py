@@ -46,7 +46,7 @@ class BankAccount:
         sufficient funds, if there is not enough money, charge a 
         insufficient_funds_fee
         """
-        # Minimun amount for sav acct is $5
+        # Minimun balance for credit union sav acct is $5
         if amount > self.balance - 5:
             self.insufficient_funds_fee(amount)
             print(f"New balnce: ${self.balance}\n")
