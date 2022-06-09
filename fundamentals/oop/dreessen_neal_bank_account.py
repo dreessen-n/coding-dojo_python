@@ -94,8 +94,6 @@ class BankAccount:
             print(f"Account number of deposits: {acct.num_deposits}")
             print(f"Account number of withdrawls: {acct.num_withdraws}\n")
 
-# Test the class
-
 # First account and starting balance of 100; use default int_rate
 print()
 acct_001 = BankAccount('acct_001', 100, 'sav')
