@@ -6,11 +6,12 @@ class BankAccount:
     """Model a standard sav account"""
     all_accounts = []
 
-    def __init__(self, balance=5, type_of_acct='sav', int_rate=4):
+    def __init__(self, name='saving acct', balance=5, type_of_acct='sav', int_rate=4):
         """
         Model a savings acct w/ default interest rate (%)
         and starting balance: min for sav is $5
         """
+        self.name = name
         self.balance = balance
         self.type_of_acct = type_of_acct
         self.int_rate = int_rate
@@ -20,7 +21,7 @@ class BankAccount:
 
     def deposit(self, amount):
         """Increase the account balance by the given amount"""
-        print("DEPOSIT")
+        print(f"DEPOSIT for: {self.name}")
         print(f"Deposit amount: {amount}")
         self.balance += amount
         print(f"New account balance: {self.balance}\n")
@@ -34,7 +35,7 @@ class BankAccount:
         print a message: 'insufficient funds: charging a $5 fee
         """
         self.balance -= 5
-        print(f"Insufficient funds: charging a $5 fee\n") 
+        print(f"Insufficient funds for {self.name}: charging a $5 fee\n") 
         return self
 
     def withdraw(self, amount):
@@ -48,7 +49,7 @@ class BankAccount:
             self.insufficient_funds_fee()
             print(f"New balnce: {self.balance}\n")
         else:
-            print("WITHDRAW")
+            print(f"WITHDRAW for {self.name}")
             print(f"Account balance: {self.balance}")
             self.balance -= amount
             print(f"Withdraw amount: {amount}")
@@ -57,7 +58,9 @@ class BankAccount:
         return self
 
     def display_account_info(self):
-        """Print to console: eg. 'balance: $100'"""
+        """Print to console: eg. balance: $100"""
+        print("ACCOUNT INFO:")
+        print(f"Account name: {self.name}")
         print(f"Account balance: {self.balance}")
         print(f"Account interest rate: {self.int_rate}")
         print(f"Number of deposits: {self.num_deposits}")
@@ -71,7 +74,7 @@ class BankAccount:
         """
         if self.balance > 0:
             # Use math to round for ease of assignment
-            print(f"Calculating interest yield for the month:")
+            print(f"Calculating interest yield for the month for {self.name}:")
             amt = int(math.ceil(self.balance * (self.int_rate / 100)))
             self.balance += amt
             print(f"Account earned ${amt} this month")
@@ -82,13 +85,19 @@ class BankAccount:
     @classmethod
     def print_accounts(cls):
         for acct in cls.all_accounts:
-            print(acct)
+            print(f"Account name: {acct.name}")
+            print(f"Account balance: {acct.balance}")
+            print(f"Account type: {acct.type_of_acct}")
+            print(f"Account interest rate: {acct.int_rate}")
+            print(f"Account number of deposits: {acct.num_deposits}")
+            print(f"Account number of withdrawls: {acct.num_withdraws}\n")
 
 # Test the class
 
 # First account and starting balance of 100; use default int_rate
 print()
-acct_001 = BankAccount(100, 'sav')
+acct_001 = BankAccount('acct_001', 100, 'sav')
+print(f"ACCOUNT CREATED:")
 acct_001.display_account_info()
 
 """
@@ -98,7 +107,8 @@ and display account info
 acct_001.deposit(100).deposit(1000).withdraw(750).deposit(250).yield_interest().display_account_info()
 
 # Second acct with start balance 500 and interest rate: 7%
-acct_002 = BankAccount(500, 'chk', 7)
+acct_002 = BankAccount('acct_002', 500, 'chk', 7)
+print(f"ACCOUNT CREATED:")
 acct_002.display_account_info()
 
 """
