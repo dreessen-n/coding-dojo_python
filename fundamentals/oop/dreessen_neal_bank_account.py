@@ -3,6 +3,7 @@
 import math
 
 class BankAccount:
+
     """Model a standard credit union bank account"""
     all_accounts = []
 
@@ -77,6 +78,8 @@ class BankAccount:
         if self.balance > 0:
             # Use math to round for ease of assignment
             print(f"Calculating interest yield for the month for {self.name}:")
+            print(f"Account balance: ${self.balance}")
+            print(f"Interest rate: {self.int_rate}%")
             amt = int(math.ceil(self.balance * (self.int_rate / 100)))
             self.balance += amt
             print(f"Account earned ${amt} this month")
