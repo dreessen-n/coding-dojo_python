@@ -22,20 +22,22 @@ class BankAccount:
     def deposit(self, amount):
         """Increase the account balance by the given amount"""
         print(f"DEPOSIT for: {self.name}")
-        print(f"Deposit amount: {amount}")
+        print(f"Deposit amount: ${amount}")
         self.balance += amount
-        print(f"New account balance: {self.balance}\n")
+        print(f"New account balance: ${self.balance}\n")
         self.num_deposits += 1
         return self
 
 # Created extra method to calculate fee
-    def insufficient_funds_fee(self):
+    def insufficient_funds_fee(self, withdraw_amt):
         """
         When insufficient funds: withdraw $5 from account and 
         print a message: 'insufficient funds: charging a $5 fee
         """
         self.balance -= 5
-        print(f"Insufficient funds for {self.name}: charging a $5 fee\n") 
+        print(f"WITHDRAW for {self.name}")
+        print(f"Account balance: ${self.balance}. Withdraw request: ${withdraw_amt}")
+        print(f"Insufficient funds for {self.name}: charging a $5 fee") 
         return self
 
     def withdraw(self, amount):
@@ -46,14 +48,14 @@ class BankAccount:
         """
         # Minimun amount for sav acct is 5
         if amount > self.balance - 5:
-            self.insufficient_funds_fee()
-            print(f"New balnce: {self.balance}\n")
+            self.insufficient_funds_fee(amount)
+            print(f"New balnce: ${self.balance}\n")
         else:
             print(f"WITHDRAW for {self.name}")
-            print(f"Account balance: {self.balance}")
+            print(f"Account balance: ${self.balance}")
             self.balance -= amount
-            print(f"Withdraw amount: {amount}")
-            print(f"New balance: {self.balance}\n")
+            print(f"Withdraw amount: ${amount}")
+            print(f"New balance: ${self.balance}\n")
         self.num_withdraws += 1
         return self
 
@@ -61,8 +63,8 @@ class BankAccount:
         """Print to console: eg. balance: $100"""
         print("ACCOUNT INFO:")
         print(f"Account name: {self.name}")
-        print(f"Account balance: {self.balance}")
-        print(f"Account interest rate: {self.int_rate}")
+        print(f"Account balance: ${self.balance}")
+        print(f"Account interest rate: {self.int_rate}%")
         print(f"Number of deposits: {self.num_deposits}")
         print(f"Number of withdraws: {self.num_withdraws}\n")
         return self
@@ -78,7 +80,7 @@ class BankAccount:
             amt = int(math.ceil(self.balance * (self.int_rate / 100)))
             self.balance += amt
             print(f"Account earned ${amt} this month")
-            print(f"New balance: {self.balance}\n")
+            print(f"New balance: ${self.balance}\n")
         return self
 
 # Add a classmethod for printing all instances
@@ -86,9 +88,9 @@ class BankAccount:
     def print_accounts(cls):
         for acct in cls.all_accounts:
             print(f"Account name: {acct.name}")
-            print(f"Account balance: {acct.balance}")
+            print(f"Account balance: ${acct.balance}")
             print(f"Account type: {acct.type_of_acct}")
-            print(f"Account interest rate: {acct.int_rate}")
+            print(f"Account interest rate: {acct.int_rate}%")
             print(f"Account number of deposits: {acct.num_deposits}")
             print(f"Account number of withdrawls: {acct.num_withdraws}\n")
 
@@ -115,7 +117,7 @@ acct_002.display_account_info()
 Second Acct: use chaining to: make 2 deposits and 4 withdraws, yield interest,
 and display acct info.
 """
-acct_002.deposit(2500).withdraw(1000).withdraw(500).deposit(2000).withdraw(3000).yield_interest().display_account_info()
+acct_002.deposit(2500).withdraw(1000).withdraw(500).deposit(2000).withdraw(3000).yield_interest().withdraw(550).display_account_info()
 
 """
 Bonus: use a classmethod to print all instances of a BankAccount's info
