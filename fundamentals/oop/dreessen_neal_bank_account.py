@@ -82,7 +82,7 @@ class BankAccount:
             print(f"Interest rate: {self.int_rate}%")
             amt = int(math.ceil(self.balance * (self.int_rate / 100)))
             self.balance += amt
-            print(f"Account earned ${amt} this month")
+            print(f"Account earned ${amt}")
             print(f"New balance: ${self.balance}\n")
         return self
 
