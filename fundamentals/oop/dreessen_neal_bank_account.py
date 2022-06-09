@@ -3,7 +3,7 @@
 import math
 
 class BankAccount:
-    """Model a standard bank account"""
+    """Model a standard credit union bank account"""
     all_accounts = []
 
     def __init__(self, name='acct_XXX', balance=5, type_of_acct='sav', int_rate=4):
