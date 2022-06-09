@@ -4,6 +4,7 @@ import math
 
 class BankAccount:
     """Model a standard sav account"""
+    all_accounts = []
 
     def __init__(self, balance=5, type_of_acct='sav', int_rate=4):
         """
@@ -15,6 +16,7 @@ class BankAccount:
         self.int_rate = int_rate
         self.num_withdraws = 0
         self.num_deposits = 0
+        BankAccount.all_accounts.append(self)
 
     def deposit(self, amount):
         """Increase the account balance by the given amount"""
@@ -79,7 +81,7 @@ class BankAccount:
 # Add a classmethod for printing all instances
     @classmethod
     def print_accounts(cls):
-        for acct in BankAccount:
+        for acct in cls.all_accounts:
             print(acct)
 
 # Test the class
@@ -108,3 +110,4 @@ acct_002.deposit(2500).withdraw(1000).withdraw(500).deposit(2000).withdraw(3000)
 """
 Bonus: use a classmethod to print all instances of a BankAccount's info
 """
+BankAccount.print_accounts()
