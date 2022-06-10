@@ -50,7 +50,7 @@ class BankAccount:
         # Minimun balance for credit union sav acct is $5
         if amount > self.balance - 5:
             self.insufficient_funds_fee(amount)
-            print(f"New balnce: ${self.balance}\n")
+            print(f"New balance: ${self.balance}\n")
         else:
             print(f"WITHDRAW for {self.name}")
             print(f"Account balance: ${self.balance}")
