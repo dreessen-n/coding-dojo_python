@@ -1,4 +1,6 @@
 # Users with BankAccounts
+# Import math class for rounding yield interest
+import math
 
 class BankAccount:
 
@@ -111,10 +113,10 @@ class Users:
         self.age = age
         self.is_rewards_member = False
         self.gold_card_points = 0
-        self.account = {
-            'saving': BankAccount(balance=0, type_of_acct='saving', int_rate=2),
-            'checking': BankAccount(balance=0, type_of_acct='checking', int_rate=4)
-        }
+        self.account = [
+            {'saving': BankAccount(balance=0, type_of_acct='saving', int_rate=2)},
+            {'checking': BankAccount(balance=0, type_of_acct='checking', int_rate=4)}
+        ]
 
     def display_open_acct_info(self):
         """Display user info"""
@@ -158,41 +160,32 @@ class Users:
         """Choose which BankAccount to access"""
         choice = input("Choose account, enter: 'saving' or 'checking': ")
         if choice == 'saving':
-            return 1
+            return 0
         elif choice == 'checking':
-            return 2
+            return 1
         else:
             print("You must enter 'saving' or 'checking' to make a deposit. Try again")
             self.choose_bank_account()
 
-    def make_deposit(self):
+    def make_deposit(self, amount, acct_type_deposit=1):
         """Make deposit into users BankAccount"""
-        print("MAKE A DEPOSIT:")
-        amount = int(input("Amount to deposit: $"))
-        acct_type = self.choose_bank_account()
-        if acct_type == 1:
-            self.account['saving'].deposit(amount)
+        if acct_type_deposit == 0:
+            self.account[0]['saving'].deposit(amount)
         else:
-            self.account['checking'].deposit(amount)
+            self.account[1]['checking'].deposit(amount)
 
-    def make_withdraw(self):
+    def make_withdraw(self, amount, acct_type_withdraw=1):
         """Make withdraw from users BankAccount"""
-        print("MAKE A WITHDRAW:")
-        amount = int(input("Amount to deposit: $"))
-        acct_type = self.choose_bank_account()
-        if acct_type == 1:
-            self.account['saving'].withdraw(amount)
+        if acct_type_withdraw == 0:
+            self.account[0]['saving'].withdraw(amount)
         else:
-            self.account['checking'].withdraw(amount)
+            self.account[1]['checking'].withdraw(amount)
 
     def display_user_balance(self):
         """Display user account balance from BankAccount"""
-        print(f"DISPLAY ACCOUNT BALANCE:")
-        acct_type = self.choose_bank_account()
-        if acct_type == 1:
-            self.account['saving'].display_account_info()
-        else:
-            self.account['checking'].display_account_info()
+        print(f"DISPLAY ACCOUNT BALANCES:")
+        self.account[0]['saving'].display_account_info()
+        self.account[1]['checking'].display_account_info()
 
     def transfer_money(self, transfer_user):
         """Transfer money to another user"""
@@ -237,24 +230,32 @@ user_neal = Users('neal', 'cassady', 'cowboy@bus.com', 53)
 # Display users opening account info and enroll in rewards
 user_neal.display_open_acct_info().enroll()
 
-# Make a deposit to users account
-user_neal.make_deposit()
-user_neal.make_deposit()
+# Make deposit user_neal account:
+amount_deposit = int(input("Amount to deposit: $"))
+acct_type_deposit = user_neal.choose_bank_account()
+user_neal.make_deposit(amount_deposit, acct_type_deposit)
+
+# Make another deposit user_neal account:
+amount_deposit = int(input("Amount to deposit: $"))
+acct_type_deposit = user_neal.choose_bank_account()
+user_neal.make_deposit(amount_deposit, acct_type_deposit)
 
 # Make a withdraw from users account
-# user_neal.make_withdraw()
+amount_withdraw = int(input("Amount to withdraw: $"))
+acct_type_withdraw = user_neal.choose_bank_account()
+user_neal.make_withdraw(amount_withdraw, acct_type_withdraw)
 
 # Display account balance and other info
-# user_neal.display_user_balance()
+user_neal.display_user_balance()
 
 # Create a second user for SENPAI BONUS
-user_2 = Users('other', 'person', 'send_money@cash.com', 85)
+# user_2 = Users('other', 'person', 'send_money@cash.com', 85)
 
 # Display other user opening account info
-user_2.display_open_acct_info()
+# user_2.display_open_acct_info()
 
 # Run the classmethod
 # BankAccount.print_accounts()
 
 # Trasfer money to from user_neal to user_transfer
-user_neal.transfer_money(user_2)
+# user_neal.transfer_money(user_2)
