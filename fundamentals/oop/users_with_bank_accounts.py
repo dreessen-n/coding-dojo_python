@@ -195,14 +195,16 @@ class Users:
         if acct_type_transfer_from == 0:
             if from_acct.account[0]['saving'].balance > transfer_amt:
                 from_acct.account[0]['saving'].balance -= transfer_amt
-                to_acct.account[1]['checking'].balance += transfer_amt
+                to_acct.account[0]['saving'].balance += transfer_amt
             else:
+                from_acct.account[0]['saving'].insufficient_funds_fee(transfer_amt)
                 print("\nTransaction CANCELLED: insufficient funds")
         else:
             if from_acct.account[1]['checking'].balance > transfer_amt:
                 from_acct.account[1]['checking'].balance -= transfer_amt
                 to_acct.account[1]['checking'].balance += transfer_amt
             else:
+                from_acct.account[1]['checking'].insufficient_funds_fee(transfer_amt)
                 print("\nTransaction CANCELLED: insufficient funds")
         print("\nTransaction Complete\n")
 
@@ -255,6 +257,8 @@ print("TRANSFER MONEY TO ANOTHER USER:")
 
 # Get transfer money amount:
 transfer_amount = int(input("Amount to transfer: $"))
+
+
 
 # Make the transfer
 user_neal.transfer_money(transfer_amount, user_neal, user_dude)
