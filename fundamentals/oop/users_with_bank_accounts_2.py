@@ -190,16 +190,17 @@ class Users:
     def transfer_money(self, transfer_amt, from_acct, to_acct):
         """Transfer money to another user"""
         # Choose which account to transfer from
-        print("{from_acct.first_name}, choose an account to transfer from:")
+        print(f"{from_acct.first_name}, choose an account to transfer from:")
         acct_type_transfer_from = from_acct.choose_bank_account()
         if acct_type_transfer_from == 0:
             if from_acct.account[0]['saving'].balance > transfer_amt:
                 from_acct.account[0]['saving'].balance -= transfer_amt
                 to_acct.account[1]['checking'].balance += transfer_amt
-            else:
-                if from_acct.account[1]['checking'].balance > transfer_amt:
-                    from_acct.account[1]['checking'].balance -= transfer_amt
-                    to_acct.account[1]['checking'].balance += transfer_amt
+        else:
+            if from_acct.account[1]['checking'].balance > transfer_amt:
+                from_acct.account[1]['checking'].balance -= transfer_amt
+                to_acct.account[1]['checking'].balance += transfer_amt
+        print("Transaction Complete\n")
 
 # Create user
 user_neal = Users('neal', 'cassady', 'cowboy@bus.com', 53)
@@ -223,12 +224,14 @@ acct_type_withdraw = user_neal.choose_bank_account()
 user_neal.make_withdraw(amount_withdraw, acct_type_withdraw)
 
 # Display account balance and other info
+print("Neal's Account info:")
 user_neal.display_user_balance()
 
 # Create a second user for SENPAI BONUS
 user_dude = Users('Jeff', 'lebowski', 'send_money@cash.com', 85)
 
 # Display user_dude opening account info and enroll in rewards
+print("The Dude's Account info:")
 user_dude.display_open_acct_info().enroll()
 
 # Display other user opening account info
@@ -253,5 +256,7 @@ transfer_amount = int(input("Amount to transfer: $"))
 user_neal.transfer_money(transfer_amount, user_neal, user_dude)
 
 # Print account balances
+print("Neal's Account info:")
 user_neal.display_user_balance()
+print("The Dude's Account info:")
 user_dude.display_user_balance()
