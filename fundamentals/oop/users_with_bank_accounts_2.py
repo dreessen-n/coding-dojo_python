@@ -187,42 +187,19 @@ class Users:
         self.account[0]['saving'].display_account_info()
         self.account[1]['checking'].display_account_info()
 
-    def transfer_money(self, transfer_user):
+    def transfer_money(self, transfer_amt, from_acct, to_acct):
         """Transfer money to another user"""
-
-        print("TRANSFER MONEY TO ANOTHER USER:")
-
-        # Get transfer money amount:
-        amount = int(input("Amount to transfer: $"))
-
-        # Select account to transfer money from
-        print("TRANSFER FROM:")
-        acct_type_from = self.choose_bank_account()
-        if acct_type_from == 1:
-            # Check for enought money to transfer
-            enough_money = self.account['saving'].balance_check(amount)
-            if enough_money:
-                self.account['saving'].withdraw(amount)
+        # Choose which account to transfer from
+        print("{from_acct.first_name}, choose an account to transfer from:")
+        acct_type_transfer_from = from_acct.choose_bank_account()
+        if acct_type_transfer_from == 0:
+            if from_acct.account[0]['saving'].balance > transfer_amt:
+                from_acct.account[0]['saving'].balance -= transfer_amt
+                to_acct.account[1]['checking'].balance += transfer_amt
             else:
-                print("Insufficient funds; transaction cancelled")
-                return
-        elif acct_type_from == 2:
-            # Check for enought money to transfer
-            enough_money = self.account['checking'].balance_check(amount)
-            if enough_money:
-                self.account['checking'].withdraw(amount)
-            else:
-                print("Insufficient funds; transaction cancelled")
-                return
-
-        # Transfer to the other account
-        transfer_user.account['checking'].balance += amount
-
-        print("TRANSFTER COMPLETE:\n")
-        print("FROM ACCOUNT...\n")
-        user_neal.display_user_balance()
-        print("TO ACCOUNT...\n")
-        transfer_user.display_user_balance()
+                if from_acct.account[1]['checking'].balance > transfer_amt:
+                    from_acct.account[1]['checking'].balance -= transfer_amt
+                    to_acct.account[1]['checking'].balance += transfer_amt
 
 # Create user
 user_neal = Users('neal', 'cassady', 'cowboy@bus.com', 53)
@@ -266,5 +243,15 @@ user_dude.display_user_balance()
 # Run the classmethod
 # BankAccount.print_accounts()
 
-# Trasfer money to from user_neal to user_transfer
-# user_neal.transfer_money(user_dude)
+# Trasfer money to from user_neal to user_dude
+print("TRANSFER MONEY TO ANOTHER USER:")
+
+# Get transfer money amount:
+transfer_amount = int(input("Amount to transfer: $"))
+
+# Make the transfer
+user_neal.transfer_money(transfer_amount, user_neal, user_dude)
+
+# Print account balances
+user_neal.display_user_balance()
+user_dude.display_user_balance()
