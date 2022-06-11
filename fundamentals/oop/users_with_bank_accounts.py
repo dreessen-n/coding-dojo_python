@@ -256,8 +256,6 @@ print("TRANSFER MONEY TO ANOTHER USER:")
 # Get transfer money amount:
 transfer_amount = int(input("Amount to transfer: $"))
 
-# Check for sufficient funds
-
 # Make the transfer
 user_neal.transfer_money(transfer_amount, user_neal, user_dude)
 
