@@ -249,13 +249,22 @@ user_neal.make_withdraw(amount_withdraw, acct_type_withdraw)
 user_neal.display_user_balance()
 
 # Create a second user for SENPAI BONUS
-# user_2 = Users('other', 'person', 'send_money@cash.com', 85)
+user_dude = Users('Jeff', 'lebowski', 'send_money@cash.com', 85)
+
+# Display user_dude opening account info and enroll in rewards
+user_dude.display_open_acct_info().enroll()
 
 # Display other user opening account info
-# user_2.display_open_acct_info()
+# Make deposit user_dude account:
+amount_deposit = int(input("Amount to deposit: $"))
+acct_type_deposit = user_dude.choose_bank_account()
+user_dude.make_deposit(amount_deposit, acct_type_deposit)
+
+# Display account balance and other info
+user_dude.display_user_balance()
 
 # Run the classmethod
 # BankAccount.print_accounts()
 
 # Trasfer money to from user_neal to user_transfer
-# user_neal.transfer_money(user_2)
+# user_neal.transfer_money(user_dude)
