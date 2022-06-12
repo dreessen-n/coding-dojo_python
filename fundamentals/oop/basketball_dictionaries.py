@@ -15,7 +15,6 @@ class Player:
         self.position = player['position']
         self.team = player['team']
 
-# __repr__ is used to format class to terminal
     def __repr__(self):
         """__repr__ is used to format class print to terminal"""
         display = f"player: {self.name}, age: {self.age}, position: {self.position}, team: {self.team}" 
@@ -145,7 +144,11 @@ for item in range(len(players_lst)):
 # Print out instances in new_list
 for item in new_list:
     print(item)
-
+print()
 # NINJA BONUS: add a get_team(cls, team_list) and @classmethod
-Player.add_player(players_lst)
-print(Player.all_players)
+all_players = Player.add_player(players_lst)
+
+for player in all_players:
+    print(player)
+
+
