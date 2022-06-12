@@ -5,7 +5,10 @@ Challenge 1: Update the Constrictor
 Update the constrictor to accept a dictionary with a single player's 
 info instead of individual arguments for attribuites
 """
+
 class Player:
+    """Create a model of a player"""
+
     def __init__(self, player):
         self.name = player['name']
         self.age = player['age']
@@ -14,9 +17,21 @@ class Player:
 
 # __repr__ is used to format class to terminal
     def __repr__(self):
+        """__repr__ is used to format class print to terminal"""
         display = f"player: {self.name}, age: {self.age}, position: {self.position}, team: {self.team}" 
         return display
 
+    """
+    Creat a classmethod for taking a list of dictonaries and creating
+    a list of instances
+    """
+    @classmethod
+    def add_player(cls, players_lst):
+        """Add player to all_players list for class"""
+        all_players = []
+        for player in players_lst:
+            all_players.append(cls(player))
+        return all_players
 
 thomas = {
     'name': 'Thomas Muller', 
@@ -65,6 +80,7 @@ print(player_lukas)
 
 player_timo = Player(timo)
 print(player_timo)
+print()
 
 """
 Challenge 3: Make a list of Player instances for a list of dictionaries
@@ -110,7 +126,10 @@ players_lst = [
     }
 ]
 
-# Solution for challenge 3
+"""
+Solution for challenge 3
+Take a list of dictionaries and produce a new list of instances
+"""
 
 new_list = []
 
@@ -123,5 +142,10 @@ for item in range(len(players_lst)):
     new_list.append(temp_name)
     # print(temp_name.name)
 
+# Print out instances in new_list
 for item in new_list:
     print(item)
+
+# NINJA BONUS: add a get_team(cls, team_list) and @classmethod
+Player.add_player(players_lst)
+print(Player.all_players)

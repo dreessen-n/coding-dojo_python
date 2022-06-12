@@ -40,7 +40,6 @@ class BankAccount:
         print(f"Insufficient funds: charging a $5 fee\n") 
         return self
 
-
     def balance_check(self, withdraw_amt):
         """Check to see if enough funds before attempting to transfer"""
         if withdraw_amt > self.balance:
