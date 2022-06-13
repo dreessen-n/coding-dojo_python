@@ -1,7 +1,7 @@
 # Import shuffle from random and classes
 from random import shuffle
 from classes.deck import Deck
-from classes.players import Players
+import classes.players
 
 # Create Deck of cards
 bicycle = Deck()
@@ -9,21 +9,24 @@ bicycle = Deck()
 # Shuffle the deck
 bicycle.shuffle_deck()
 
+# Divide the deck
+bicycle.divide_deck()
+
 # Print the shuffled deck
 # bicycle.show_cards()
 
 # Create computer-player
-player_comp = Players('Computer')
+player_comp = classes.players.Players('computer')
 
 # Create 1 players
-player_1 = Players(input("What is your name: "))
+player_1 = classes.players.Players(input("what is your name? "))
 
 # print(bicycle.show_cards())
 # TODO Distribute cards to each player
-for item in range(52):
-    if item % 2 == 0:
-        player_1.hand.append(bicycle.cards[item])
-        print(player_1.hand[item].card_info())
+player_comp.hand = bicycle.cards_1
+player_1.hand = bicycle.cards_2
+player_1.hand[0].card_info()
+# player_1.show_hand()
 
 # TODO Play game:
 # game goes until one player has all the cards

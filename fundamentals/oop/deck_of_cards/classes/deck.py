@@ -7,6 +7,8 @@ class Deck:
     def __init__( self ):
         suits = [ "spades" , "hearts" , "clubs" , "diamonds" ]
         self.cards = []
+        self.cards_1 = []
+        self.cards_2 = []
 
         for s in suits:
             for i in range(1,14):
@@ -30,4 +32,10 @@ class Deck:
     def shuffle_deck(self):
         """Shuffle the deck before distributing cards"""
         shuffle(self.cards)
+        
+    def divide_deck(self):
+        """Split the deck between two list"""
+        self.cards_1 = self.cards[:27]
+        self.cards_2 = self.cards[27:]
+
 
