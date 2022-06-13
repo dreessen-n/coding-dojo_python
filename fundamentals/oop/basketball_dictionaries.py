@@ -60,7 +60,6 @@ timo = {
     'team': 'Chelsea'
 }
 
-
 """
 Challenge 2: Create instances using individual player dictionaries
 NOTE: I had all ready created data before realizing I was suppose to 
@@ -150,5 +149,4 @@ all_players = Player.add_player(players_lst)
 
 for player in all_players:
     print(player)
-
 
