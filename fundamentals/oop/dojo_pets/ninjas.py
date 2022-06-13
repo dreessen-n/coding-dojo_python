@@ -40,3 +40,12 @@ print(ninja_neal)
 ninja_neal.feed()
 ninja_neal.walk()
 ninja_neal.bathe()
+
+"""
+SENSEI BONUS: use inheritance to create a sub class of Pets
+Created a sub class called ExoticPets
+"""
+# I got this working as a sub class in the Pets Class file but not here... yet!
+
+
+
