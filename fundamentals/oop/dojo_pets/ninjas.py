@@ -50,7 +50,7 @@ Had trouble at first... realized need to import both classes.
 Works here in ninjas file and pets file
 """
 
-print("SENDEI BONUS:")
+print("SENSEI BONUS:")
 print(f"Exotic pet's name: {ninja_neal.exotic_pet.name}")
 ninja_neal.exotic_pet.license()
 
