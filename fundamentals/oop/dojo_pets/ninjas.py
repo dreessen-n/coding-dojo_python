@@ -2,7 +2,7 @@
 """Create a class for Ninjas"""
 
 # Import in Pets class
-import pets
+from pets import Pets, ExoticPets
 
 class Ninjas:
     """Model a ninja student"""
@@ -11,9 +11,10 @@ class Ninjas:
         """Initialize the ninja class"""
         self.first_name = first_name
         self.last_name = last_name
-        self.pet = pets.Pets('Earl', 'bird', 'pooping on people', 'Caw')
+        self.pet = Pets('Earl', 'bird', 'pooping on people', 'Caw')
         self.treats = treats
         self.pet_food = pet_food
+        self.exotic_pet = ExoticPets('Ben', 'bear', 'stand up', 'Growwwlllll')
 
     def __repr__(self):
         """__repr__ is used to format class print to terminal"""
@@ -40,12 +41,16 @@ print(ninja_neal)
 ninja_neal.feed()
 ninja_neal.walk()
 ninja_neal.bathe()
+print()
 
 """
 SENSEI BONUS: use inheritance to create a sub class of Pets
 Created a sub class called ExoticPets
+Had trouble at first... realized need to import both classes.
+Works here in ninjas file and pets file
 """
-# I got this working as a sub class in the Pets Class file but not here... yet!
 
-
+print("SENDEI BONUS:")
+print(f"Exotic pet's name: {ninja_neal.exotic_pet.name}")
+ninja_neal.exotic_pet.license()
 
