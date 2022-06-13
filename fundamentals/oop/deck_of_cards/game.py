@@ -22,14 +22,53 @@ player_comp = classes.players.Players('computer')
 player_1 = classes.players.Players(input("what is your name? "))
 
 # print(bicycle.show_cards())
-# TODO Distribute cards to each player
+# Distribute cards to each player
 player_comp.hand = bicycle.cards_1
 player_1.hand = bicycle.cards_2
+
+"""
+To print out single card from hand:
 player_1.hand[0].card_info()
-# player_1.show_hand()
+To get the point value of card at 0 index:
+player_comp.hand[0].point_val
+"""
 
 # TODO Play game:
 # game goes until one player has all the cards
+
+game = True
+while game == True:
+
+    # determine that both players still have cards
+    if player_comp.hand == []:
+        print(f"Game Over: {player_1.name} has won the game!")
+        game = False
+    if player_1.hand == []:
+        print(f"Game Over: Computer has won the the game!")
+        game = False
+
+    # Print cards so we can see who has what
+    print(f"Computer flips:")
+    player_comp.hand[0].card_info()
+    print(f"{player_1.name} flips:") 
+    player_1.hand[0].card_info()
+
+    # Find out who won
+    if player_comp.hand[0].point_val == player_1.hand[0].point_val:
+        print("Tie! play another round")
+        continue
+    elif player_comp.hand[0].point_val >= player_1.hand[0].point_val:
+        print(f"Computer wins the round!")
+        temp = player_1.hand[0]
+        print(temp)
+    else:
+        print(f"{player_1.name} wins the round!")
+        temp = player_comp.hand[0]
+        
+        print(temp)
+
+    game = False
+
 
 # TODO rounds
 """
