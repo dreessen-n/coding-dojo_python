@@ -1,4 +1,5 @@
 from . import card
+from random import shuffle
 
 class Deck:
 
@@ -25,4 +26,8 @@ class Deck:
     def show_cards(self):
         for card in self.cards:
             card.card_info()
+
+    def shuffle_deck(self):
+        """Shuffle the deck before distributing cards"""
+        shuffle(self.cards)
 
