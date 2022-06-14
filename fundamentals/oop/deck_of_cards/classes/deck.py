@@ -38,4 +38,3 @@ class Deck:
         self.cards_1 = self.cards[:27]
         self.cards_2 = self.cards[27:]
 
-
