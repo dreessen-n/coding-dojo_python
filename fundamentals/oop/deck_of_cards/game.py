@@ -38,6 +38,8 @@ player_comp.hand[0].point_val
 
 game = True
 count_rnd = 0
+tie = False
+
 while game == True:
     
     # to end the loop for debugging
@@ -47,12 +49,12 @@ while game == True:
        break 
 
     # determine that both players still have cards
-    if player_comp.hand == []:
-        print(f"Game Over: {player_1.name} has won the game!")
-        game = False
-    if player_1.hand == []:
-        print(f"Game Over: Computer has won the the game!")
-        game = False
+#     if player_comp.hand == []:
+#         print(f"Game Over: {player_1.name} has won the game!")
+#         game = False
+#     if player_1.hand == []:
+#         print(f"Game Over: Computer has won the the game!")
+#         game = False
 
     # Print cards so we can see who has what
     print(f"Computer flips:")
@@ -63,6 +65,9 @@ while game == True:
     # Find out who won
     if player_comp.hand[0].point_val == player_1.hand[0].point_val:
         print("Tie! play another round\n")
+        # Remove the tie cards or it just keeps checking same cards
+        del player_1.hand[0]
+        del player_comp.hand[0]
     elif player_comp.hand[0].point_val >= player_1.hand[0].point_val:
         print("Computer wins the round!\n")
         temp = player_1.hand[0]
@@ -105,7 +110,7 @@ else:
 print(f"\nCards left in hands at the end of 20 rounds:\n")
 print(f"{player_1.name}'s hand:\n")
 f"{player_1.show_hand()}\n"
-print("computer's hand:\n")
+print(f"\ncomputer's hand:\n")
 f"{player_comp.show_hand()}\n"
 
 
