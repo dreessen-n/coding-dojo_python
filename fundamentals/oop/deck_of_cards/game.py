@@ -55,22 +55,26 @@ while game == True:
 
     # Find out who won
     if player_comp.hand[0].point_val == player_1.hand[0].point_val:
-        print("Tie! play another round")
+        print("Tie! play another round\n")
         continue
     elif player_comp.hand[0].point_val >= player_1.hand[0].point_val:
-        print(f"Computer wins the round!")
+        print("Computer wins the round!\n")
         temp = player_1.hand[0]
         player_comp.hand.append(player_1.hand[0])
         del player_1.hand[0]
-        print(player_1.show_hand())
-        print(player_comp.show_hand())
+        print("player_1 Hand:")
+        f"{player_1.show_hand()}\n"
+        print("computer Hand:")
+        f"{player_comp.show_hand()}\n"
     else:
-        print(f"{player_1.name} wins the round!")
+        print(f"{player_1.name} wins the round!\n")
         temp = player_comp.hand[0]
         player_1.hand.append(player_comp.hand[0])
         del player_comp.hand[0]
-        print(player_1.show_hand())
-        print(player_comp.show_hand())
+        print("player_1 Hand:")
+        f"{player_1.show_hand()}\n"
+        print("computer Hand:")
+        f"{player_comp.show_hand()}\n"
 
     game = False
 
