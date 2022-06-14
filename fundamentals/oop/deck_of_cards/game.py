@@ -91,7 +91,6 @@ while game == True:
         f"{player_comp.show_hand()}\n"
         """
 
-
 # Print Results
 print("AND THE WINNER IS...")
 if len(player_1.hand) == len(player_comp.hand):
@@ -112,5 +111,4 @@ print(f"{player_1.name}'s hand:\n")
 f"{player_1.show_hand()}\n"
 print(f"\ncomputer's hand:\n")
 f"{player_comp.show_hand()}\n"
-
 
