@@ -60,12 +60,17 @@ while game == True:
     elif player_comp.hand[0].point_val >= player_1.hand[0].point_val:
         print(f"Computer wins the round!")
         temp = player_1.hand[0]
-        print(temp)
+        player_comp.hand.append(player_1.hand[0])
+        del player_1.hand[0]
+        print(player_1.show_hand())
+        print(player_comp.show_hand())
     else:
         print(f"{player_1.name} wins the round!")
         temp = player_comp.hand[0]
-        
-        print(temp)
+        player_1.hand.append(player_comp.hand[0])
+        del player_comp.hand[0]
+        print(player_1.show_hand())
+        print(player_comp.show_hand())
 
     game = False
 
