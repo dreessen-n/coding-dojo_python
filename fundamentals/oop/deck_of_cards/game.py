@@ -37,7 +37,14 @@ player_comp.hand[0].point_val
 # game goes until one player has all the cards
 
 game = True
+count_rnd = 0
 while game == True:
+    
+    # to end the loop for debugging
+    # game = False
+    count_rnd = count_rnd + 1
+    if count_rnd == 20:
+       break 
 
     # determine that both players still have cards
     if player_comp.hand == []:
@@ -62,27 +69,44 @@ while game == True:
         temp = player_1.hand[0]
         player_comp.hand.append(player_1.hand[0])
         del player_1.hand[0]
+        """Leave print statements in for debugging
         print("player_1 Hand:")
         f"{player_1.show_hand()}\n"
         print("computer Hand:")
         f"{player_comp.show_hand()}\n"
+        """
     else:
         print(f"{player_1.name} wins the round!\n")
         temp = player_comp.hand[0]
         player_1.hand.append(player_comp.hand[0])
         del player_comp.hand[0]
+        """Leave print statements in for debugging
         print("player_1 Hand:")
         f"{player_1.show_hand()}\n"
         print("computer Hand:")
         f"{player_comp.show_hand()}\n"
+        """
 
-    game = False
+
+# Print Results
+print("AND THE WINNER IS...")
+if len(player_1.hand) == len(player_comp.hand):
+    print(f"Tie! go for a rematch")
+elif len(player_1.hand) > len(player_comp.hand):
+    print(f"{player_1.name} is the winner!")
+    print(f"score:")
+    print(f"{player_1.name}: {len(player_1.hand)}")
+    print(f"Computer: {len(player_comp.hand)}")
+else:
+    print(f"{player_comp.name} is the winner!")
+    print(f"score:")
+    print(f"Computer: {len(player_comp.hand)}")
+    print(f"{player_1.name}: {len(player_1.hand)}")
+
+print(f"\nCards left in hands at the end of 20 rounds:\n")
+print(f"{player_1.name}'s hand:\n")
+f"{player_1.show_hand()}\n"
+print("computer's hand:\n")
+f"{player_comp.show_hand()}\n"
 
 
-# TODO rounds
-"""
-Each player draws top card from hand 
-high card wins, winner gets card added to deck
-"""
-
-# TODO Declare the winner
