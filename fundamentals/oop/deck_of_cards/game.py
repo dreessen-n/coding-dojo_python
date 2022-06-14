@@ -68,11 +68,13 @@ while game == True:
         # Remove the tie cards or it just keeps checking same cards
         del player_1.hand[0]
         del player_comp.hand[0]
+        player_comp.hand[0]
     elif player_comp.hand[0].point_val >= player_1.hand[0].point_val:
         print("Computer wins the round!\n")
         temp = player_1.hand[0]
         player_comp.hand.append(player_1.hand[0])
         del player_1.hand[0]
+        player_1.hand.pop(0)
         """Leave print statements in for debugging
         print("player_1 Hand:")
         f"{player_1.show_hand()}\n"
