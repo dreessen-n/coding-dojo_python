@@ -9,7 +9,7 @@ class Pirate:
         self.health = 100
         self.weapons = [
             {'sword': Weapons('sword', 3, 3)},
-            {'gun': Weapons('gun', 5, 3)}
+            {'gun': Weapons('gun', 5, 3)},
         ]
 
     def show_stats( self ):
@@ -20,8 +20,8 @@ class Pirate:
         return self
 
     def show_my_weapons(self):
+        """Display list of weapons for ninja"""
         for weapon in self.weapons:
             for key, value in weapon.items():
-                print(f"weapon: {key}\n")
-                print(f"Strength Damage: {value.strength_damage_pts}\n")
-                print(f"Health Damage: {value.health_damage_pts}\n")
+                print(f"weapon: {key}\<br\>")
+                print(f"Strength Damage: {value.strength_damage_pts} Health Damage: {value.health_damage_pts}\n")
