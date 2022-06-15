@@ -21,4 +21,7 @@ class Pirate:
 
     def show_my_weapons(self):
         for weapon in self.weapons:
-            print(weapon)
+            for key, value in weapon.items():
+                print(f"weapon: {key}\n")
+                print(f"Strength Damage: {value.strength_damage_pts}\n")
+                print(f"Health Damage: {value.health_damage_pts}\n")
