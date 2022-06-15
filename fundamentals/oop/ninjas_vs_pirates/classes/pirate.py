@@ -1,3 +1,5 @@
+from .weapons import Weapons
+
 class Pirate:
 
     def __init__( self , name ):
@@ -5,6 +7,10 @@ class Pirate:
         self.strength = 15
         self.speed = 3
         self.health = 100
+        self.weapons = [
+            {'sword': Weapons('sword', 3, 3)},
+            {'gun': Weapons('gun', 5, 3)}
+        ]
 
     def show_stats( self ):
         print(f"Name: {self.name}\nStrength: {self.strength}\nSpeed: {self.speed}\nHealth: {self.health}\n")
@@ -13,3 +19,6 @@ class Pirate:
         ninja.health -= self.strength
         return self
 
+    def show_my_weapons(self):
+        for weapon in self.weapons:
+            print(weapon)
