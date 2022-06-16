@@ -17,13 +17,22 @@ class Ninja:
         print(f"Name: {self.name}\nStrength: {self.strength}\nSpeed: {self.speed}\nHealth: {self.health}\n")
 
     def attack( self , pirate ):
-        pirate.health -= self.strength
+        """Attack with a weapon"""
+        print(f"{self.name} ATTACKS!")
+        print("Choose your weapon:")
+        attack_weapon = input("Enter: 'katana' or 'tanto': ")
+        if attack_weapon == 'katana':
+            pirate.health -= self.weapons[0]['katana'].health_damage_pts
+            pirate.strength -= self.weapons[0]['katana'].strength_damage_pts
+        else:
+            pirate.health -= self.weapons[1]['tanto'].health_damage_pts
+            pirate.strength -= self.weapons[1]['tanto'].strength_damage_pts
         return self
 
     def show_my_weapons(self):
         """Display list of weapons for ninja"""
         for weapon in self.weapons:
             for key, value in weapon.items():
-                print(f"weapon: {key}\<br\>")
+                print(f"weapon: {key}")
                 print(f"Strength Damage: {value.strength_damage_pts} Health Damage: {value.health_damage_pts}\n")
                 
